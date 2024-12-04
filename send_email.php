@@ -64,7 +64,7 @@ try {
     $mail->Port = $smtp['port'];
     $mail->SMTPSecure = ($smtp['encryption'] === 'ssl') ? PHPMailer::ENCRYPTION_SMTPS : PHPMailer::ENCRYPTION_STARTTLS;
 
-    $mail->setFrom($smtp['username'], 'Gerbox');
+    $mail->setFrom($smtp['username'], 'API SMTP');
 
     // Adiciona todos os destinatários
     foreach ($toList as $to) {
