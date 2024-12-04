@@ -2,7 +2,7 @@ fetch('https://seusite.com.br/send_email.php', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer d4f0c8e0-1234-4567-890a-bcdef8564219'
+        'Authorization': 'Bearer 4urqLYfeoWTzh5y6Hu2JP7zZGdboWhMMATDXF985Shw6wv53jkHGXHcPY1LvkZ9T'
     },
     body: JSON.stringify({
         to: 'email@destino.com',
