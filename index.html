@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviar E-mail</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Envie um E-mail</h2>
+        <form id="emailForm">
+            <div class="form-group">
+                <label for="to">Para:</label>
+                <input type="email" id="to" name="to" required>
+            </div>
+            <div class="form-group">
+                <label for="subject">Assunto:</label>
+                <input type="text" id="subject" name="subject" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Mensagem:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="button" id="sendButton">Enviar</button>
+        </form>
+        <div id="responseMessage" style="margin-top: 10px; text-align: center; color: #555;"></div>
+    </div>
+
+    <script>
+        document.getElementById('sendButton').addEventListener('click', function() {
+            const to = document.getElementById('to').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            const token = 'd4f0c8e0-1234-4567-890a-bcdef1234567'; // Token estático
+
+            // Valida se todos os campos estão preenchidos
+            if (!to || !subject || !message) {
+                document.getElementById('responseMessage').innerText = 'Por favor, preencha todos os campos.';
+                return;
+            }
+
+            // Enviar requisição via fetch
+            fetch('https://seusite.com.br/send_email.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + token
+                },
+                body: JSON.stringify({ to, subject, message })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    document.getElementById('responseMessage').innerText = 'E-mail enviado com sucesso!';
+                } else {
+                    document.getElementById('responseMessage').innerText = 'Erro: ' + data.message;
+                }
+            })
+            .catch(error => {
+                document.getElementById('responseMessage').innerText = 'Erro ao enviar e-mail.';
+                console.error(error);
+            });
+        });
+    </script>
+</body>
+</html>
