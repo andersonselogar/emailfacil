@@ -1,0 +1,12 @@
+{
+    "to": "emailparaalguem@teste.com.br",
+    "subject": "Teste de API com Configuração de Servidor",
+    "message": "Esta é uma mensagem enviada usando autenticação por token!",
+    "smtp": {
+        "host": "seusite.seusite.com.br",
+        "username": "seuemail@seusite.com.br",
+        "password": "suasenha123",
+        "port": 587,
+        "encryption": "tls"
+    }
+}
