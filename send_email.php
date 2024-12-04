@@ -12,7 +12,7 @@ header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 
 // Defina o token para autenticação
-define('API_TOKEN', 'd4f0c8e0-1234-4567-890a-bcdef8564219');
+define('API_TOKEN', '4urqLYfeoWTzh5y6Hu2JP7zZGdboWhMMATDXF985Shw6wv53jkHGXHcPY1LvkZ9T');
 
 // Verifica se é uma solicitação POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
