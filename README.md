@@ -43,3 +43,73 @@ Se bem-sucedido:
 Retorna um código HTTP 200 com uma mensagem de sucesso no formato JSON.
 Se falhar:
 Retorna um código HTTP 500 com a mensagem de erro gerada pelo PHPMailer.
+---------------------------------------------------------------------------------------------------------
+
+Exemplo de Uso
+Requisição POST para Enviar um E-mail
+URL: http://seuservidor/send_email.php
+
+Corpo da Requisição:
+
+{
+    "to": "destinatario@exemplo.com",
+    "subject": "Assunto do E-mail",
+    "message": "Esta é uma mensagem de teste."
+}
+
+------------------------------------------------------------------------------------------------------------
+
+JSON Flexível
+Você pode enviar o JSON de duas formas:
+
+ 1 Para um único destinatário:
+{
+    "to": "cliente@seusite.com.br",
+    "subject": "E-mail para um destinatário",
+    "message": "Esta é uma mensagem enviada para um único destinatário.",
+    "smtp": {
+        "host": "mail.seusite.com.br",
+        "username": "suporte@seusite.com.br",
+        "password": "suasenha123456",
+        "port": 587,
+        "encryption": "tls"
+    }
+}
+------------------------------------------------------------------------------------------------------------
+
+2 Para múltiplos destinatários:
+
+{
+    "to": ["cliente1@gmail.com", "cliente2@gmail.com"],
+    "subject": "E-mail para múltiplos destinatários",
+    "message": "Esta é uma mensagem enviada para vários destinatários.",
+    "smtp": {
+        "host": "mail.seusite.com.br",
+        "username": "suporte@seusite.com.br",
+        "password": "suasenha123456",
+        "port": 587,
+        "encryption": "tls"
+    }
+}
+------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
